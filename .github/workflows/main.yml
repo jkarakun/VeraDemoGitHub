@@ -4,8 +4,7 @@ name: SCA on change in dependencies definition
 on:
   # Triggers the workflow on push where package-lock.json modifies or pull request events
   push:
-    paths:
-      - 'package-lock.json'
+
   pull_request:
   
   # Allows you to run this workflow manually from the Actions tab
