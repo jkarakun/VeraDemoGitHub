@@ -1,4 +1,4 @@
-name: Security Scan
+name: Build, Upload and Scan
 
 on:
   workflow_dispatch:
@@ -21,16 +21,3 @@ jobs:
     - name: Start Static and SCA Compliance scan
       continue-on-error: true
       run: java -jar VeracodeJavaAPI.jar -action uploadandscan -vid ${{ secrets.VERACODE_API_ID }} -vkey ${{ secrets.VERACODE_API_KEY }} -createprofile false -appname "Github-VeraDemo" -version "GitHub Actions job $GITHUB_RUN_NUMBER" -filepath verademo.war
-     
-    - name: Activate SCA agent
-      continue-on-error: false
-      run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s activate --api ${{ secrets.SRCCLR_API_URL }}
-      
-    - name: Run Agent Based SCA
-      continue-on-error: false
-      run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan --ws=N22Ug3Y --url https://github.com/srcclr/example-java-maven --update-advisor
-      
-    - name: Container Scan
-      env: 
-        SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
-      run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan --ws=N22Ug3Y --image clintpollock/verademo-java:latest
