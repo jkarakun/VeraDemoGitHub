@@ -36,7 +36,7 @@ jobs:
         uses: veracode/veracode-uploadandscan-action@master
         id: upload_and_scan
         with:
-          appname: 'Verademo123456'
+          appname: 'Github-VeraDemo'
           createprofile: true
           version: '${{ github.run_id }}'
           criticality: Medium
