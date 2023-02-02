@@ -24,7 +24,7 @@ jobs:
      
     - name: SCA agent
       continue-on-error: true
-      run: srcclr scan --ws=N22Ug3Y -url https://github.com/srcclr/example-java-maven --update-advisor
+      run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s -url https://github.com/srcclr/example-java-maven --update-advisor
      
     - name: Container Scan
       env: 
