@@ -3,7 +3,7 @@ name: Build, Upload and Scan
 on:
   workflow_dispatch:
   push:
-    branches: [ master, release/* ]
+    branches: [ main, release/* ]
   pull_request:
     branches: [ master, develop, main, release/* ]
     
